@@ -1,13 +1,27 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  {{ testCount }}
+  <button @click="inc">
+    Add
+  </button>
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { storeToRefs } from "pinia";
+import { useStore } from "../src/store/index";
+
+export default defineComponent({
+  setup() {
+    const store = useStore();
+    const { test: testCount } = storeToRefs(store);
+
+    return {
+      testCount,
+      inc: store.incTest
+    };
+  },
+});
+</script>
 
 <style>
 #app {
