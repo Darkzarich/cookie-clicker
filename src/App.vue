@@ -1,35 +1,40 @@
 <template>
-  {{ testCount }}
-  <button @click="inc">
-    Add
-  </button>
+  <div class="container">
+    <CookieCounter />
+    <Cookie />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { storeToRefs } from "pinia";
-import { useStore } from "../src/store/index";
+import Cookie from "@/components/Cookie.vue";
+import CookieCounter from "@/components/CookieCounter.vue";
 
 export default defineComponent({
-  setup() {
-    const store = useStore();
-    const { test: testCount } = storeToRefs(store);
-
-    return {
-      testCount,
-      inc: store.incTest
-    };
-  },
+  components: {
+    Cookie,
+    CookieCounter
+  }
 });
 </script>
 
 <style>
+body {
+  background: url('@/assets/texture.jpg');
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 </style>

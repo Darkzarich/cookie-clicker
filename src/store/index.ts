@@ -2,11 +2,11 @@ import { defineStore } from 'pinia';
 
 export const useStore = defineStore('main', {
   state: () => ({
-    test: 0,
+    cookies: 0,
   }),
   actions: {
-    incTest() {
-      this.test++;
+    addCookies(amount: number) {
+      this.cookies = this.cookies + amount;
     },
   },
 });
