@@ -1,6 +1,6 @@
 <template>
   <div class="cookie-counter">
-    {{ cookies }}
+    {{ Math.floor(cookies) }}
   </div>
 </template>
 

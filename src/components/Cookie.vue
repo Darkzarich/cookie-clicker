@@ -1,12 +1,9 @@
 <template>
-  <div class="cookie" @click="changeCookie">
-    
-  </div>
+  <div class="cookie" @click="changeCookie" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { storeToRefs } from "pinia";
 import { useStore } from "@/store/index";
 
 export default defineComponent({

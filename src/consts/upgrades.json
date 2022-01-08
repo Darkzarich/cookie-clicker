@@ -1,0 +1,20 @@
+{
+  "cursor": {
+    "name": "Cursor",
+    "price": 25,
+    "effect": 0.2,
+    "image": "/upgrades/cursor.jpg"
+  },
+  "grandma": {
+    "name": "Grandma",
+    "price": 100,
+    "effect": 1,
+    "image": "/upgrades/grandma.png"
+  },
+  "factory": {
+    "name": "Factory",
+    "price": 2000,
+    "effect": 20,
+    "image": "/upgrades/factory.png"
+  }
+}

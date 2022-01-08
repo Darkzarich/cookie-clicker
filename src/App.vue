@@ -2,18 +2,41 @@
   <div class="container">
     <CookieCounter />
     <Cookie />
+    <Upgrades />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+import { useStore } from "@/store/index";
 import Cookie from "@/components/Cookie.vue";
 import CookieCounter from "@/components/CookieCounter.vue";
+import Upgrades from "@/components/Upgrades.vue";
+import { getUpgradeEffect } from '@/utils/index';
+
+const TICK_INTERVAL = 1000;
 
 export default defineComponent({
   components: {
     Cookie,
-    CookieCounter
+    CookieCounter,
+    Upgrades
+  },
+  setup() {
+    const store = useStore();
+
+    onMounted(() => {
+      setInterval(() => {
+        let cookiesToAdd = 0;
+
+        for(const upgradeKey in store.upgradesCount) {
+          cookiesToAdd = cookiesToAdd + getUpgradeEffect(upgradeKey) 
+            * store.upgradesCount[upgradeKey];
+        }
+
+        store.addCookies(cookiesToAdd);
+      }, TICK_INTERVAL)
+    })
   }
 });
 </script>
