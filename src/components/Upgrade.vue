@@ -51,7 +51,7 @@ export default defineComponent({
     })
 
     function handleUpgradeBuy() {      
-      if (store.cookies < props.price) {
+      if (store.cookies < totalPrice.value) {
         return;
       }
 
