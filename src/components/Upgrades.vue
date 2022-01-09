@@ -3,10 +3,14 @@
     <div 
       v-for="(upgrade, upgradeKey) of upgrades" 
       class="upgrade" 
+      :class="{'upgrade--not-available': getTotalPrice(upgradeKey as string, upgrade.price) > cookies }"
       @click="handleUpgradeBuy(upgradeKey as string, upgrade.price)"
     >
       <div class="upgrade__image-container">
         <img :src="upgrade.image" class="upgrade__image">
+        <template v-if="upgradesCount[upgradeKey]">
+          x{{ upgradesCount[upgradeKey] }}
+        </template>
       </div>
       <div class="upgrade__name">
         {{ upgrade.name }}
@@ -49,7 +53,9 @@ export default defineComponent({
 
     return {
       upgrades: getUpgrades(),
+      cookies: store.cookies,
       getTotalPrice,
+      upgradesCount: store.upgradesCount,
       handleUpgradeBuy
     }
   },
@@ -75,6 +81,9 @@ export default defineComponent({
       height: 100%;
       width: 50px;
       margin-right: 55px;
+      align-items: center;
+      font-size: 15px;
+      font-weight: bolder;
     }
 
     &__price {
@@ -89,6 +98,14 @@ export default defineComponent({
       font-weight: 700;
       margin: auto;
       width: 100px;
+    }
+
+    &__image {
+      height: 100%;
+    }
+
+    &--not-available {
+      opacity: 0.5;
     }
 }
 
