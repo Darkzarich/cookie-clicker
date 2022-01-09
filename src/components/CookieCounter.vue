@@ -5,14 +5,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useStore } from "@/store/index";
+import { defineComponent } from "vue";
+import useCookies from '@/composables/useCookies'
 
 export default defineComponent({
   setup() {
-    const store = useStore();
-    
-    const cookies = computed(() => store.cookies)
+    const { cookies } = useCookies();
 
     return {
       cookies
