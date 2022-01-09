@@ -1,19 +1,19 @@
 {
   "cursor": {
     "name": "Cursor",
-    "price": 25,
+    "price": 15,
     "effect": 0.2,
     "image": "/upgrades/cursor.jpg"
   },
   "grandma": {
     "name": "Grandma",
-    "price": 100,
+    "price": 75,
     "effect": 1,
     "image": "/upgrades/grandma.png"
   },
   "factory": {
     "name": "Factory",
-    "price": 2000,
+    "price": 1500,
     "effect": 20,
     "image": "/upgrades/factory.png"
   }

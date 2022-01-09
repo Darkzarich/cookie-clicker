@@ -12,7 +12,7 @@
         {{ upgrade.name }}
       </div>
       <div class="upgrade__price">
-        {{ upgrade.price }}
+        {{ getTotalPrice(upgradeKey as string, upgrade.price) }}
       </div>
     </div>
   </div>
@@ -33,15 +33,23 @@ export default defineComponent({
     const store = useStore();
 
     function handleUpgradeBuy(upgradeKey: string, price: number) {
+      const totalPrice = getTotalPrice(upgradeKey, price);
+
       if (store.cookies < price) {
         return;
       }
 
-      store.buyUpgrade(upgradeKey, price);
+      store.buyUpgrade(upgradeKey, totalPrice);
+    }
+
+    function getTotalPrice(upgradeKey: string, price: number) {
+      return (store.upgradesCount[upgradeKey] + 1 || 1)
+        * price;
     }
 
     return {
       upgrades: getUpgrades(),
+      getTotalPrice,
       handleUpgradeBuy
     }
   },
